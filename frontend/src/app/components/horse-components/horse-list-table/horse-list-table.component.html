@@ -1,0 +1,28 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Date Of Birth</th>
+      <th>Gender</th>
+      <th>Pregnant</th>
+      <th>Due Date</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let horse of horses">
+      <td>{{ horse.id }}</td>
+      <td>{{ horse.name }}</td>
+      <td>{{ horse.dob | date: "dd/MM/yyyy" }}</td>
+      <td>{{ genders[horse.gender] || "" }}</td>
+      <td>{{ parsePregnantField(horse) }}</td>
+      <td>{{ horse.due_date | date: "dd/MM/yyyy" }}</td>
+      <td>
+        <a><fa-icon [icon]="faEye"></fa-icon></a> &nbsp;
+        <a><fa-icon [icon]="faEdit"></fa-icon></a> &nbsp;
+        <a><fa-icon [icon]="faTrash"></fa-icon></a>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -11,7 +11,7 @@ const Horse = sequelize.define('horse', {
         type: DataTypes.DATEONLY
     },
     gender: {
-        type: DataTypes.BOOLEAN,
+        type: DataTypes.INTEGER,
         allowNull: false
     },
     pregnant: {
