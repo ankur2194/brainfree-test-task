@@ -1,9 +1,7 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const horseRoutes = require('./horse.routes');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.json({ title: 'Express' });
-});
+router.use('/horses', horseRoutes);
 
 module.exports = router;
