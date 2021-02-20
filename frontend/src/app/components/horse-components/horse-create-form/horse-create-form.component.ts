@@ -20,11 +20,11 @@ export class HorseCreateFormComponent implements OnInit {
     private router: Router
   ) {
     this.horseCreateForm = this.fb.group({
-      name: ['', [Validators.required]],
-      dob: ['', []],
-      gender: ['', [Validators.required]],
-      pregnant: ['', []],
-      due_date: ['', []],
+      name: [null, [Validators.required]],
+      dob: [null, []],
+      gender: [null, [Validators.required]],
+      pregnant: [null, []],
+      due_date: [null, []],
     });
 
     this.horseCreateForm.get('gender').valueChanges.subscribe((val) => {
@@ -42,7 +42,7 @@ export class HorseCreateFormComponent implements OnInit {
     });
 
     this.horseCreateForm.get('pregnant').valueChanges.subscribe((val) => {
-      if (val === 1 && this.isFemale) {
+      if (val === true && this.isFemale) {
         this.horseCreateForm
           .get('due_date')
           .setValidators([Validators.required]);
@@ -67,6 +67,13 @@ export class HorseCreateFormComponent implements OnInit {
     }
 
     this.loading = true;
+
+    if (!this.isFemale) {
+      this.horseCreateForm.get('pregnant').setValue(null);
+      this.horseCreateForm.get('due_date').setValue(null);
+    } else if (!this.isPregnant) {
+      this.horseCreateForm.get('due_date').setValue(null);
+    }
 
     const horseData = this.horseCreateForm.value;
     this.horseService.createHorse(horseData).subscribe(
