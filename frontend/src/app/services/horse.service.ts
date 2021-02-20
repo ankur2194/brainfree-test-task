@@ -25,4 +25,18 @@ export class HorseService {
       })
     );
   }
+
+  createHorse(horseData: any): Observable<boolean> {
+    return this.http.post<any>(this.API_URL + `/horses/create`, horseData).pipe(
+      map((res) => {
+        let isCreated: boolean = false;
+        if (res && res.success && res.data) {
+          isCreated = res.data;
+        } else {
+          throw 'Error while creating horse';
+        }
+        return isCreated;
+      })
+    );
+  }
 }

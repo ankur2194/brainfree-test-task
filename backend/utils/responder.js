@@ -12,4 +12,13 @@ const error = (error) => {
     };
 };
 
-module.exports = { success, error };
+const validationError = (error) => {
+    return {
+        success: false,
+        error: {
+            VALIDATION_ERROR: error.body
+        }
+    };
+};
+
+module.exports = { success, error, validationError };
