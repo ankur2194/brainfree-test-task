@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { faCalendar } from '@fortawesome/free-solid-svg-icons';
 import { HorseService } from 'src/app/services/horse.service';
 
 @Component({
@@ -14,8 +13,6 @@ export class HorseCreateFormComponent implements OnInit {
   isFemale: boolean = false;
   isPregnant: boolean = false;
   loading: boolean = false;
-
-  faCalendar = faCalendar;
 
   constructor(
     private fb: FormBuilder,
@@ -66,7 +63,7 @@ export class HorseCreateFormComponent implements OnInit {
     }
 
     if (this.horseCreateForm.invalid || this.loading) {
-      // return;
+      return;
     }
 
     this.loading = true;
