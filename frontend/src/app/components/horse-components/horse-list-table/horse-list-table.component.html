@@ -19,9 +19,17 @@
       <td>{{ parsePregnantField(horse) }}</td>
       <td>{{ horse.due_date | date: "dd/MM/yyyy" }}</td>
       <td>
-        <a><fa-icon [icon]="faEye"></fa-icon></a> &nbsp;
-        <a><fa-icon [icon]="faEdit"></fa-icon></a> &nbsp;
-        <a><fa-icon [icon]="faTrash"></fa-icon></a>
+        <a [routerLink]="['/horses', horse.id]" style="color: initial"
+          ><fa-icon [icon]="faEye"></fa-icon
+        ></a>
+        &nbsp;
+        <a [routerLink]="['/horses', horse.id, 'edit']" style="color: initial"
+          ><fa-icon [icon]="faEdit"></fa-icon
+        ></a>
+        &nbsp;
+        <a (click)="deleteHorse(horse)" style="cursor: pointer; color: initial"
+          ><fa-icon [icon]="faTrash"></fa-icon
+        ></a>
       </td>
     </tr>
   </tbody>

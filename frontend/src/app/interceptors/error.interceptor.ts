@@ -20,7 +20,6 @@ export class ErrorInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       tap((event) => {
         if (event instanceof HttpResponse) {
-          console.log(event.body);
           if (
             event.status === 200 &&
             event.body &&

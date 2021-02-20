@@ -26,6 +26,20 @@ export class HorseService {
     );
   }
 
+  getHorseById(id: number): Observable<any> {
+    return this.http.get<any>(this.API_URL + `/horses/${id}`).pipe(
+      map((res) => {
+        let horse: any = null;
+        if (res && res.success && res.data) {
+          horse = res.data;
+        } else {
+          throw 'Error while fetching horse';
+        }
+        return horse;
+      })
+    );
+  }
+
   createHorse(horseData: any): Observable<boolean> {
     return this.http.post<any>(this.API_URL + `/horses/create`, horseData).pipe(
       map((res) => {
@@ -36,6 +50,36 @@ export class HorseService {
           throw 'Error while creating horse';
         }
         return isCreated;
+      })
+    );
+  }
+
+  updateHorse(id: number, horseData: any): Observable<boolean> {
+    return this.http
+      .put<any>(this.API_URL + `/horses/${id}/update`, horseData)
+      .pipe(
+        map((res) => {
+          let isUpdated: boolean = false;
+          if (res && res.success && res.data) {
+            isUpdated = res.data;
+          } else {
+            throw 'Error while updating horse';
+          }
+          return isUpdated;
+        })
+      );
+  }
+
+  deleteHorse(id: number): Observable<boolean> {
+    return this.http.delete<any>(this.API_URL + `/horses/${id}/delete`).pipe(
+      map((res) => {
+        let isDeleted: boolean = false;
+        if (res && res.success && res.data) {
+          isDeleted = res.data;
+        } else {
+          throw 'Error while deleting horse';
+        }
+        return isDeleted;
       })
     );
   }

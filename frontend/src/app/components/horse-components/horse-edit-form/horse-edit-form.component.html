@@ -1,0 +1,137 @@
+<form [formGroup]="horseEditForm" (ngSubmit)="submitForm()" novalidate>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Name <span class="text-danger">*</span></label>
+        <input type="text" class="form-control" formControlName="name" />
+        <div
+          *ngIf="
+            horseEditForm.controls['name'].invalid &&
+            (horseEditForm.controls['name'].dirty ||
+              horseEditForm.controls['name'].touched)
+          "
+          class="alert alert-danger"
+        >
+          <div *ngIf="horseEditForm.controls['name'].errors.required">
+            Name is required.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Date Of Birth</label>
+        <input type="date" class="form-control" formControlName="dob" />
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <label>Gender <span class="text-danger">*</span></label>
+      &nbsp;
+      <div class="form-check form-check-inline">
+        <label class="form-check-label">
+          <input
+            name="gender"
+            type="radio"
+            class="form-check-input"
+            formControlName="gender"
+            [value]="1"
+          />
+          Male
+        </label>
+        &nbsp; &nbsp;
+        <label class="form-check-label">
+          <input
+            name="gender"
+            type="radio"
+            class="form-check-input"
+            formControlName="gender"
+            [value]="2"
+          />
+          Female
+        </label>
+      </div>
+      <div
+        *ngIf="
+          horseEditForm.controls['gender'].invalid &&
+          (horseEditForm.controls['gender'].dirty ||
+            horseEditForm.controls['gender'].touched)
+        "
+        class="alert alert-danger"
+      >
+        <div *ngIf="horseEditForm.controls['gender'].errors.required">
+          Gender is required.
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div *ngIf="isFemale">
+        <label>Pregnant Status <span class="text-danger">*</span></label>
+        &nbsp;
+        <div class="form-check form-check-inline">
+          <label class="form-check-label">
+            <input
+              name="pregnant"
+              type="radio"
+              class="form-check-input"
+              formControlName="pregnant"
+              [value]="true"
+            />
+            Yes
+          </label>
+          &nbsp; &nbsp;
+          <label class="form-check-label">
+            <input
+              name="pregnant"
+              type="radio"
+              class="form-check-input"
+              formControlName="pregnant"
+              [value]="false"
+            />
+            No
+          </label>
+        </div>
+        <div
+          *ngIf="
+            horseEditForm.controls['pregnant'].invalid &&
+            (horseEditForm.controls['pregnant'].dirty ||
+              horseEditForm.controls['pregnant'].touched)
+          "
+          class="alert alert-danger"
+        >
+          <div *ngIf="horseEditForm.controls['pregnant'].errors.required">
+            Pregnant Status is required.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div *ngIf="isPregnant">
+        <label>Due Date <span class="text-danger">*</span></label>
+        <input type="date" class="form-control" formControlName="due_date" />
+        <div
+          *ngIf="
+            horseEditForm.controls['due_date'].invalid &&
+            (horseEditForm.controls['due_date'].dirty ||
+              horseEditForm.controls['due_date'].touched)
+          "
+          class="alert alert-danger"
+        >
+          <div *ngIf="horseEditForm.controls['due_date'].errors.required">
+            Due Date is required.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 text-right">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+</form>

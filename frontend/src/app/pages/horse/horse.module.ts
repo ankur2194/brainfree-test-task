@@ -7,9 +7,11 @@ import { HorseComponent } from './horse.component';
 import { HorseComponentsModule } from 'src/app/components/horse-components/horse-components.module';
 import { HorseCreateComponent } from './horse-create/horse-create.component';
 import { ErrorInterceptor } from 'src/app/interceptors/error.interceptor';
+import { HorseEditComponent } from './horse-edit/horse-edit.component';
+import { HorseDetailComponent } from './horse-detail/horse-detail.component';
 
 @NgModule({
-  declarations: [HorseComponent, HorseCreateComponent],
+  declarations: [HorseComponent, HorseCreateComponent, HorseEditComponent, HorseDetailComponent],
   imports: [CommonModule, HorseRoutingModule, HorseComponentsModule],
   providers: [
     {

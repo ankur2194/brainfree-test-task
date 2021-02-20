@@ -1,0 +1,22 @@
+<table border="0" cellpadding="10">
+  <tr>
+    <th>Name:</th>
+    <td>{{ horse.name }}</td>
+  </tr>
+  <tr>
+    <th>Date Of Birth:</th>
+    <td>{{ horse.dob | date: "dd/MM/yyyy" }}</td>
+  </tr>
+  <tr>
+    <th>Gender:</th>
+    <td>{{ genders[horse.gender] || "" }}</td>
+  </tr>
+  <tr *ngIf="horse.gender === 2">
+    <th>Pregnant:</th>
+    <td>{{ parsePregnantField(horse) }}</td>
+  </tr>
+  <tr *ngIf="horse.gender === 2 && horse.pregnant">
+    <th>Due Date:</th>
+    <td>{{ horse.due_date | date: "dd/MM/yyyy" }}</td>
+  </tr>
+</table>
