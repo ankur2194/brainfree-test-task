@@ -35,7 +35,6 @@ export class HorseCreateFormComponent implements OnInit {
         this.isFemale = true;
       } else {
         this.isFemale = false;
-        this.isPregnant = false;
         this.horseCreateForm.get('pregnant').setValidators([]);
         this.horseCreateForm.get('due_date').setValidators([]);
       }
